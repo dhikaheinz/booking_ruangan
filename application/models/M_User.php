@@ -13,4 +13,8 @@ class M_User extends CI_Model {
         return false;
         }
     }
+
+    function inputUserLogin($data_input_UserProfil) {
+        $this->db->insert("tbl_user", $data_input_UserProfil);
+    }
 }

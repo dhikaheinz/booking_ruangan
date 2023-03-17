@@ -3,11 +3,14 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <link rel="shortcut icon" href="./img/fav.png" type="image/x-icon" />
+        <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon" />
         <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css" />
         <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css" />
 		<!-- <script src="https://cdn.tailwindcss.com"></script> -->
-        <title>Booking Ruangan PKJ</title>
+        <link href="https://cdn.jsdelivr.net/npm/tom-select@2.0.0-rc.4/dist/css/tom-select.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/tom-select@2.0.0-rc.4/dist/js/tom-select.complete.min.js"></script>
+        <title>Halaman Depan | Booking Ruangan PKJ</title>
     </head>
     <body class="bg-gray-100">
         <!-- start navbar -->
@@ -22,7 +25,7 @@
             </div>
             <!-- end logo -->
             <!-- navbar content toggle -->
-			<a href="<?php base_url('pageAdmin') ?>" id="navbarToggle" class="group hidden md:block md:fixed right-0 mr-6 capitalize hover:bg-gray-400 p-4 rounded-md transition-all">
+			<a href="<?= base_url("home/pageLogin") ?>" id="navbarToggle" class="group hidden md:block md:fixed right-0 mr-6 capitalize hover:bg-gray-400 p-4 rounded-md transition-all">
                     <h1 class="text-sm text-gray-800 group-hover:text-white font-semibold m-0 p-0 leading-none uppercase"> Login </h1>
                     <!-- <i class="fad fa-chevron-down ml-2 text-xs leading-none"></i> -->
             </a>
@@ -31,7 +34,7 @@
             <div id="navbar" class="animated sm:hidden md:fixed md:top-0 md:w-full md:left-0 md:mt-16 md:border-t md:border-b md:border-gray-200 md:p-10 md:bg-white flex-1 pl-3 flex flex-row flex-wrap justify-between items-center md:flex-col md:items-center">
                 <!-- left -->
                 <div class="text-gray-600 md:w-full sm:flex md:flex-row md:justify-evenly md:pb-10 md:mb-10 md:border-b md:border-gray-200">
-                    <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900 uppercase font-bold" href="#" title="email">Booking Ruangan Poltekkes Jakarta 1</a>
+                    <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900 uppercase font-bold" href="<?= base_url() ?>" title="email">Booking Ruangan Poltekkes Jakarta 1</a>
                 </div>
                 <!-- end left -->
                 <!-- right -->
@@ -42,7 +45,7 @@
                             <!-- <div class="w-8 h-8 overflow-hidden rounded-full">
                                 <img class="w-full h-full object-cover" src="./assets/img/user.svg" />
                             </div> -->
-                            <a href="<?php echo base_url("/user/pageAdmin") ?>" class="group ml-2 capitalize flex hover:bg-gray-400 p-4 rounded-md transition-all">
+                            <a href="<?= base_url("home/pageLogin") ?>" class="group ml-2 capitalize flex hover:bg-gray-400 p-4 rounded-md transition-all">
                                 <h1 class="text-sm text-gray-800 group-hover:text-white font-semibold m-0 p-0 leading-none uppercase"> Login </h1>
                                 <!-- <i class="fad fa-chevron-down ml-2 text-xs leading-none"></i> -->
                             </a>
@@ -69,14 +72,37 @@
             <!-- end navbar content -->
         </div>
         <!-- end navbar -->
-        <!-- strat wrapper -->
+<!-- strat wrapper -->
         <div class="h-screen flex flex-row flex-wrap">
             <!-- strat content -->
             <div class="bg-gray-100 flex-1 p-6 md:mt-24">
                 <!-- General Report -->
                 <div class="grid grid-cols-4 gap-6 xl:grid-cols-1">
                     <!-- card -->
-                    <div class="report-card">
+                    <a href="<?= base_url("home/pageLogin") ?>" class="report-card w-full">
+                    <!-- <div > -->
+                        <div class="card">
+                            <div class="card-body flex flex-col">
+                                <!-- top -->
+                                <div class="flex flex-row justify-between items-center">
+                                    <div class="h6 text-red-700 fad fa-store"></div>
+                                    <!-- <span class="rounded-full text-white badge bg-red-400 text-xs"> 6% <i class="fal fa-chevron-down ml-1"></i> -->
+                                    </span>
+                                </div>
+                                <!-- end top -->
+                                <!-- bottom -->
+                                <div class="mt-3">
+                                    <h1 class="h3">Request Ruangan</h1>
+                                    <p>Login Terlebih Dahulu</p>
+                                </div>
+                                <!-- end bottom -->
+                            </div>
+                        </div>
+                        <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+                    <!-- </div> -->
+                    </a>
+                    <!-- card -->
+                    <div class="report-card w-full">
                         <div class="card">
                             <div class="card-body flex flex-col">
                                 <!-- top -->
@@ -98,7 +124,7 @@
                     </div>
                     <!-- end card -->
                     <!-- card -->
-                    <div class="report-card">
+                    <div class="report-card w-full">
                         <div class="card">
                             <div class="card-body flex flex-col">
                                 <!-- top -->
@@ -120,7 +146,7 @@
                     </div>
                     <!-- end card -->
                     <!-- card -->
-                    <div class="report-card">
+                    <div class="report-card w-full">
                         <div class="card">
                             <div class="card-body flex flex-col">
                                 <!-- top -->
@@ -144,58 +170,47 @@
                 </div>
                 <!-- End General Report -->
                 <!-- start quick Info -->
-                <div class="grid grid-cols-3 gap-6 mt-6 xl:grid-cols-1">
-                    <!-- Start Recent Sales -->
-                    <div class="card col-span-4 xl:col-span-1 overflow-x-auto">
-                        <div class="card-header">Request Ruangan</div>
-                        <table class="table-auto w-full text-left">
-                            <thead>
-                                <tr>
-                                    <th class="px-4 py-2 border-r">Tanggal</th>
-                                    <th class="px-4 py-2 border-r">Nama Ruangan</th>
-                                    <th class="px-4 py-2 border-r">Kegiatan</th>
-                                    <th class="px-4 py-2 border-r">Jam Mulai</th>
-                                    <th class="px-4 py-2 border-r">Jam Selesai</th>
-                                    <th class="px-4 py-2 border-r">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-gray-600">
-                                <tr>
-                                    <td class="border border-l-0 px-4 py-2"> 21-08-2024 </td>
-                                    <td class="border border-l-0 px-4 py-2"> Ruang 312 </td>
-                                    <td class="border border-l-0 px-4 py-2"> Meeting </td>
-                                    <td class="border border-l-0 px-4 py-2"> 13:00 </td>
-                                    <td class="border border-l-0 px-4 py-2"> 15:00 </td>
-                                    <td class="border border-l-0 px-4 py-2"> <div class="bg-red-400 xl:w-full w-1/3"><span class="p-3">Waiting</span></div></td>
-                                </tr>
-                                <tr>
-                                    <td class="border border-l-0 px-4 py-2"> 21-08-2024 </td>
-                                    <td class="border border-l-0 px-4 py-2"> Ruang 315 </td>
-                                    <td class="border border-l-0 px-4 py-2"> Seminar </td>
-                                    <td class="border border-l-0 px-4 py-2"> 10:00 </td>
-                                    <td class="border border-l-0 px-4 py-2"> 15:00 </td>
-                                    <td class="border border-l-0 px-4 py-2"> <div class="bg-green-400 xl:w-full w-1/3"><span class="p-3">Approve</span></div></td>
-                                </tr>
-                                <tr>
-                                    <td class="border border-l-0 px-4 py-2"> 21-08-2024 </td>
-                                    <td class="border border-l-0 px-4 py-2"> Ruang Aula </td>
-                                    <td class="border border-l-0 px-4 py-2"> Pembelajaran </td>
-                                    <td class="border border-l-0 px-4 py-2"> 12:00 </td>
-                                    <td class="border border-l-0 px-4 py-2"> 15:00 </td>
-                                    <td class="border border-l-0 px-4 py-2"> <div class="bg-green-400 xl:w-full w-1/3"><span class="p-3">Approve</span></div></td>
-                                </tr>
-                                <tr>
-                                    <td class="border border-l-0 px-4 py-2"> 21-08-2024 </td>
-                                    <td class="border border-l-0 px-4 py-2"> Ruang Aula Direktorat </td>
-                                    <td class="border border-l-0 px-4 py-2"> Praktek </td>
-                                    <td class="border border-l-0 px-4 py-2"> 08:00 </td>
-                                    <td class="border border-l-0 px-4 py-2"> 15:00 </td>
-                                    <td class="border border-l-0 px-4 py-2"> <div class="bg-red-400 xl:w-full w-1/3"><span class="p-3">Waiting</span></div></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <div class="w-full mt-5 bg-orange-100 p-3 rounded-md shadow-md">
+                    <div class="flex justify-between">
+                        <div class="mx-7">
+                            <h1 class="text-2xl font-bold lg:text-base">Jadwal Kegiatan</h1>
+                        </div>
+                        <div class="mx-7">
+                            <h1 class="text-2xl lg:text-base my-1">Tanggal Hari ini: <?php echo date("d-m-Y"); ?></h1>
+                        </div>
                     </div>
-                    <!-- End Recent Sales -->
+                    <!-- <div class="flex justify-between">
+                        <div class="mx-7">
+                            <a href="#" class="bg-green-200 p-2">
+                            <h1 class="text-base font-bold lg:text-base mb-5"></h1>
+                            </a>
+                        </div>
+                    </div> -->
+                    <!-- Button trigger modal -->
+                    <table id="example" class="display nowrap" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>Tgl Kegiatan</th>
+                            <th>Nama Ruangan</th>
+                            <th>Kegiatan</th>
+                            <th>Jam Kegiatan</th>
+                            <th>Peminjam</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                        foreach ($viewDataBooking as $row) { ?>
+                        <tr>
+                            <td><?php echo $row->tgl_mulai; ?></td>
+                            <td><?php echo $row->nama_room; ?></td>
+                            <td><?php echo $row->kegiatan; ?></td>
+                            <td><?php echo $row->jam_mulai .' - '. $row->jam_selesai;?></td>
+                            <td><?php echo $row->id_profil; ?></td>
+                        </tr>
+                        </div>
+                        <?php } ?>
+                    </tbody>
+                    </table>
                 </div>
                 <!-- end quick Info -->
             </div>
@@ -205,6 +220,15 @@
         <!-- script -->
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <script src="./assets/js/scripts.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#example').DataTable({
+                    scrollX: true,
+                });
+            });
+        </script>
         <!-- end script -->
     </body>
 </html>

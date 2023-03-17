@@ -22,7 +22,7 @@
                                 <!-- bottom -->
                                 <div class="mt-8">
                                     <h1 class="h5">12</h1>
-                                    <p>Request Ruangan</p>
+                                    <p>User!! Request Ruangan</p>
                                 </div>
                                 <!-- end bottom -->
                             </div>
@@ -109,9 +109,6 @@
                         </div>
                     </div>
                     <!-- Button trigger modal -->
-                    <?php 
-                    // print_r($viewDataRuangan);
-                    ?>
                     <table id="example" class="display nowrap" style="width: 100%">
                     <thead>
                         <tr>
@@ -147,6 +144,8 @@
         <script src="../assets/js/scripts.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+        <?php $this->load->view('template/footer'); ?>
+        <!-- end script -->
         <script>
             $(document).ready(function () {
                 $('#example').DataTable({
@@ -154,6 +153,5 @@
                 });
             });
         </script>
-        <!-- end script -->
     </body>
 </html>
