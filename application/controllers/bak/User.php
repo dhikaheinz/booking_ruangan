@@ -8,7 +8,6 @@ class User extends CI_Controller {
         parent::__construct();
 		$this->load->model('M_User');
 		$this->load->model('M_RequestRoom');
-		$this->load->model('M_Ruangan');
     }
 
 	public function index()
@@ -17,9 +16,6 @@ class User extends CI_Controller {
 			redirect('Home/index');
 		}
 		$data['viewDataBooking'] = $this->M_RequestRoom->viewRequestRoomFront()->result();
-		$data['viewTotalDataRuangan'] = $this->M_Ruangan->viewRuangan()->num_rows();
-		$data['viewRuanganToday'] = $this->M_Ruangan->viewRuanganToday()->num_rows();
-		$data['viewRuanganTotal'] = $this->M_Ruangan->viewRuanganTotal()->num_rows();
 		$this->load->view('page/frontDashboard', $data);
 	}
 

@@ -70,9 +70,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => 'mariadb',
 	'username' => 'root',
-	'password' => '',
+	'password' => 'poltekes@2022',
 	'database' => 'db_book_ruangan_pkj',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

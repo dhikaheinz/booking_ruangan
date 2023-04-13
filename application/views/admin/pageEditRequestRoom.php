@@ -14,7 +14,7 @@
         </div>
         <div id="forminputRuangan" class="w-96 md:w-full">
             <h1 class="text-2xl">Edit Request Ruangan</h1><br>
-                <form action="<?php echo site_url('RequestRuangan/updateRequestRuangan/').$data_request_ruangan->id_booking; ?>" method="post">
+                <form action="/RequestRuangan/updateRequestRuangan/ <?= $data_request_ruangan->id_booking; ?>" method="post">
                     <div class="grid gap-5 mb-6 md:grid-cols-2">
                         <div>
                             <label for="first_name" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Judul Kegiatan</label>
@@ -127,7 +127,7 @@
                         <th>Kegiatan</th>
                         <th>Jam Kegiatan</th>
                         <th>Tgl Kegiatan</th>
-                        <th>Status Booking</th>
+                        <th>Status Request</th>
                         <!-- <th>Deskripsi Ruangan</th> -->
                         <th>Action</th>
                     </tr>
@@ -158,10 +158,10 @@
                                 };
                                 ?>
                                 <div class="pt-1 px-1 bg-blue-200 hover:bg-blue-500 text-black font-bold rounded-lg">
-                                    <a href="<?= site_url('requestRuangan/editRequestRuangan/').$row->id_booking ?>"><i class='bx bxs-edit bx-tada text-2xl' ></i></a>
+                                    <a href="/requestRuangan/editRequestRuangan/<?= $row->id_booking ?>"><i class='bx bxs-edit bx-tada text-2xl' ></i></a>
                                 </div>
                                 <div class="pt-1 px-1 bg-orange-400 hover:bg-orange-500 text-black font-bold rounded-lg">
-                                    <a href="<?= site_url('requestRuangan/deleteRequestRuangan/').$row->id_booking ?>"><box-icon name='trash' type='solid' animation='tada' ></box-icon></a>
+                                    <a href="/requestRuangan/deleteRequestRuangan/<?= $row->id_booking ?>"><box-icon name='trash' type='solid' animation='tada' ></box-icon></a>
                                 </div>
                             </div>
                         </td>

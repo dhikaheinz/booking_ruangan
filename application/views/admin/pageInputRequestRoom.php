@@ -9,12 +9,12 @@
         <div class="flex flex-row justify-start">
             <div>
                 <button id="btnInputRuangan" onclick="popUpInputRuangan()" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
-                    font-medium rounded-lg text-sm w-full px-5 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Tambah Request Ruangan</button>
+                    font-medium rounded-lg text-sm w-full px-5 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Tambah Permintaan Ruangan</button>
             </div>
         </div>
         <div id="forminputRuangan" class="w-96 md:w-full hidden">
-            <h1 class="text-2xl">Request Ruangan</h1><br>
-                <form action="<?php echo site_url('RequestRuangan/inputRequestRuangan'); ?>" method="post">
+            <h1 class="text-2xl">Permintaan Ruangan</h1><br>
+                <form action="/RequestRuangan/inputRequestRuangan" method="post">
                     <div class="grid gap-5 mb-6 md:grid-cols-2">
                         <div>
                             <label for="first_name" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Judul Kegiatan</label>
@@ -114,7 +114,7 @@
             
             <!-- Tabel -->
             <div class="w-full mt-5">
-                <h1 class="text-2xl">Data Request Booking</h1><br>
+                <h1 class="text-2xl">Data Permintaan Ruangan</h1><br>
                 <!-- Button trigger modal -->
                 <?php 
                 // print_r($viewDataRuangan);
@@ -127,7 +127,7 @@
                         <th>Kegiatan</th>
                         <th>Jam Kegiatan</th>
                         <th>Tgl Kegiatan</th>
-                        <th>Status Booking</th>
+                        <th>Status Permintaan</th>
                         <!-- <th>Deskripsi Ruangan</th> -->
                         <th>Action</th>
                     </tr>
@@ -158,10 +158,10 @@
                                 };
                                 ?>
                                 <div class="pt-1 px-1 bg-blue-200 hover:bg-blue-500 text-black font-bold rounded-lg">
-                                    <a href="<?= site_url('requestRuangan/editRequestRuangan/').$row->id_booking ?>"><i class='bx bxs-edit bx-tada text-2xl' ></i></a>
+                                    <a href="/requestRuangan/editRequestRuangan/ <?= $row->id_booking ?>"><i class='bx bxs-edit bx-tada text-2xl' ></i></a>
                                 </div>
                                 <div class="pt-1 px-1 bg-orange-400 hover:bg-orange-500 text-black font-bold rounded-lg">
-                                    <a href="<?= site_url('requestRuangan/deleteRequestRuangan/').$row->id_booking ?>"><box-icon name='trash' type='solid' animation='tada' ></box-icon></a>
+                                    <a href="/requestRuangan/deleteRequestRuangan/ <?= $row->id_booking ?>"><box-icon name='trash' type='solid' animation='tada' ></box-icon></a>
                                 </div>
                             </div>
                         </td>

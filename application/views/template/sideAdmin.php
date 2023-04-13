@@ -22,16 +22,16 @@ flex-none w-64 md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl anim
                         <i class="fad fa-shopping-cart text-xs mr-2"></i> ecommerce dashboard </a> -->
                     <!-- end link -->
 
-                    <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider"> Booking </p>
+                    <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider"> Data Permintaan </p>
                     <!-- link -->
                     <?php
                         if ($this->session->userdata('status') == 'login' && $this->session->userdata('level') == '1') {
                             //admin
                             echo '<a href="'.base_url('home/pageRequestRuangan').'" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                            <i class="fad fa-envelope-open-text text-xs mr-2"></i> Request Ruangan Admin</a>';
+                            <i class="fad fa-envelope-open-text text-xs mr-2"></i> Permintaan Ruangan Admin</a>';
                         } else if ($this->session->userdata('status') == 'login' && $this->session->userdata('level') == '2') {
                             echo '<a href="'.base_url('home/pageRequestRuangan').'" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                            <i class="fad fa-envelope-open-text text-xs mr-2"></i> Request Ruangan User </a>';
+                            <i class="fad fa-envelope-open-text text-xs mr-2"></i> Permintaan Ruangan User </a>';
                         }
                     ?>
                     <!-- end link -->

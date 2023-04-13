@@ -21,8 +21,8 @@
                                 <!-- end top -->
                                 <!-- bottom -->
                                 <div class="mt-8">
-                                    <h1 class="h5">12</h1>
-                                    <p>User!! Request Ruangan</p>
+                                    <h1 class="h5"><?= $viewRequestRoomUser ?></h1>
+                                    <p>Total Data yang Anda Request</p>
                                 </div>
                                 <!-- end bottom -->
                             </div>
@@ -43,7 +43,7 @@
                                 <!-- end top -->
                                 <!-- bottom -->
                                 <div class="mt-8">
-                                    <h1 class="h5">30</h1>
+                                    <h1 class="h5"><?= $viewTotalDataRuangan ?></h1>
                                     <p>Jumlah Ruangan</p>
                                 </div>
                                 <!-- end bottom -->
@@ -65,8 +65,8 @@
                                 <!-- end top -->
                                 <!-- bottom -->
                                 <div class="mt-8">
-                                    <h1 class="h5">10</h1>
-                                    <p>Ruang Kosong</p>
+                                    <h1 class="h5"><?= $viewRuanganTotal ?></h1>
+                                    <p>Total Kegiatan</p>
                                 </div>
                                 <!-- end bottom -->
                             </div>
@@ -87,8 +87,8 @@
                                 <!-- end top -->
                                 <!-- bottom -->
                                 <div class="mt-8">
-                                    <h1 class="h5">23</h1>
-                                    <p>Ruangan Digunakan</p>
+                                    <h1 class="h5"><?= $viewRuanganToday ?></h1>
+                                    <p>Kegiatan Event Hari Ini</p>
                                 </div>
                                 <!-- end bottom -->
                             </div>

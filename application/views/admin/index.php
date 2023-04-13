@@ -21,8 +21,8 @@
                                 <!-- end top -->
                                 <!-- bottom -->
                                 <div class="mt-8">
-                                    <h1 class="h5">12</h1>
-                                    <p>Request Ruangan</p>
+                                    <h1 class="h5"><?= $viewTotalRequestRoom ?></h1>
+                                    <p class="text-base font-bold text-black">Total Permintaan Ruangan</p>
                                 </div>
                                 <!-- end bottom -->
                             </div>
@@ -43,8 +43,8 @@
                                 <!-- end top -->
                                 <!-- bottom -->
                                 <div class="mt-8">
-                                    <h1 class="h5">30</h1>
-                                    <p>Jumlah Ruangan</p>
+                                    <h1 class="h5"><?= $viewTotalDataRuangan ?></h1>
+                                    <p class="text-base font-bold text-black">Jumlah Ruangan</p>
                                 </div>
                                 <!-- end bottom -->
                             </div>
@@ -65,8 +65,8 @@
                                 <!-- end top -->
                                 <!-- bottom -->
                                 <div class="mt-8">
-                                    <h1 class="h5">10</h1>
-                                    <p>Ruang Kosong</p>
+                                    <h1 class="h5"><?= $viewRequestRoomTotalApprove ?></h1>
+                                    <p class="text-base font-bold text-black">Total Permintaan Sudah di Approve</p>
                                 </div>
                                 <!-- end bottom -->
                             </div>
@@ -87,8 +87,8 @@
                                 <!-- end top -->
                                 <!-- bottom -->
                                 <div class="mt-8">
-                                    <h1 class="h5">23</h1>
-                                    <p>Ruangan Digunakan</p>
+                                    <h1 class="h5"><?= $viewRequestRoomTotalPending ?></h1>
+                                    <p class="text-base font-bold text-black">Total Permintaan Pending</p>
                                 </div>
                                 <!-- end bottom -->
                             </div>

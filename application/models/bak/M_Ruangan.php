@@ -36,19 +36,4 @@ class M_Ruangan extends CI_Model {
         $this->db->delete('tbl_room');
         $this->session->set_flashdata('notif', '<p class="hide-it text-center text-white bg-yellow-600 my-3 p-2 rounded-md">Berhasil Delete Ruangan</p>');
     }
-
-    function viewRuanganToday(){
-        $this->db->select('*');
-        $this->db->from('tbl_booking');
-        $this->db->where('tgl_mulai', date('Y-m-d'));
-    
-        return $query = $this->db->get();
-    }
-
-    function viewRuanganTotal(){
-        $this->db->select('*');
-        $this->db->from('tbl_booking');
-    
-        return $query = $this->db->get();
-    }
 }

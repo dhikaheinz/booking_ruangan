@@ -7,7 +7,7 @@
          <?php
 					echo $this->session->flashdata('notif'); 
 					?>
-					<form action="<?php echo site_url('User/aksi_login'); ?>" method="post">
+					<form action="/User/aksi_login" method="post">
           <div class="mb-4">
             <label class="block font-medium text-gray-700 mb-2" for="username">
               NIP/NIM

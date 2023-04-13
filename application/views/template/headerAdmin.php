@@ -3,15 +3,15 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <link rel="shortcut icon" href="<?= site_url() ?>/img/fav.png" type="image/x-icon" />
+        <link rel="shortcut icon" href="/img/fav.png" type="image/x-icon" />
         <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css" />
-        <link rel="stylesheet" type="text/css" href="<?= site_url() ?>/assets/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css" />
 		<!-- <script src="https://cdn.tailwindcss.com"></script> -->
         <link href="https://cdn.jsdelivr.net/npm/tom-select@2.0.0-rc.4/dist/css/tom-select.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/tom-select@2.0.0-rc.4/dist/js/tom-select.complete.min.js"></script>
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-        <title>Halaman Dashboard | Booking Ruangan PKJ</title>
+        <title>Halaman Dashboard | Pemesanan Ruangan PolkesJaSa</title>
         <style>
             @media (max-width: 640px){
                 div.dataTables_wrapper {
@@ -29,9 +29,9 @@
                 <button id="sliderBtn" class="flex-none text-right text-gray-900 hidden md:block xl:block mr-3">
                     <i class="fad fa-list-ul"></i>  
                 </button>
-                <img src="<?= site_url() ?>/assets/img/logo.png" class="w-10 flex-none" />
-                <strong class="capitalize ml-3 flex-1 block xl:hidden">Booking Ruangan Poltekkes Jakarta 1</strong>
-                <strong class="capitalize ml-3 flex-1 hidden xl:block">Booking Ruangan PolkesJaSa</strong>
+                <img src="/assets/img/logo.png" class="w-10 flex-none" />
+                <strong class="capitalize ml-3 flex-1 block xl:hidden">Pemesanan Ruangan PolkesJaSa</strong>
+                <strong class="capitalize ml-3 flex-1 hidden xl:block">Pemesanan Ruangan PolkesJaSa</strong>
                 <button id="sliderBtn" class="flex-none text-right text-gray-900 hidden md:block xl:hidden">
                     <i class="fad fa-list-ul"></i>
                 </button>
@@ -43,30 +43,12 @@
                                 <img class="w-full h-full object-cover" src="<?= site_url() ?>/assets/img/user.svg" />
                             </div>
                             <div class="ml-2 capitalize flex">
-                                <h1 class="text-sm text-gray-800 font-semibold m-0 p-0 leading-none"> Dhika </h1>
+                                <h1 class="text-sm text-gray-800 font-semibold m-0 p-0 leading-none"> User </h1>
                                 <i class="fad fa-chevron-down ml-2 text-xs leading-none"></i>
                             </div>
                         </button>
                         <button class="hidden fixed top-0 left-0 z-10 w-full h-full menu-overflow"></button>
                         <div class="text-gray-500 menu hidden md:mt-10 md:w-full rounded bg-white shadow-md absolute z-20 right-0 w-40 mt-5 py-2 animated faster">
-                            <!-- item -->
-                            <a class="px-4 py-2 block capitalize font-medium text-sm tracking-wide bg-white hover:bg-gray-200 hover:text-gray-900 transition-all duration-300 ease-in-out" href="#">
-                                <i class="fad fa-user-edit text-xs mr-1"></i> edit my profile </a>
-                            <!-- end item -->
-                            <!-- item -->
-                            <a class="px-4 py-2 block capitalize font-medium text-sm tracking-wide bg-white hover:bg-gray-200 hover:text-gray-900 transition-all duration-300 ease-in-out" href="#">
-                                <i class="fad fa-inbox-in text-xs mr-1"></i> my inbox </a>
-                            <!-- end item -->
-                            <!-- item -->
-                            <a class="px-4 py-2 block capitalize font-medium text-sm tracking-wide bg-white hover:bg-gray-200 hover:text-gray-900 transition-all duration-300 ease-in-out" href="#">
-                                <i class="fad fa-badge-check text-xs mr-1"></i> tasks </a>
-                            <!-- end item -->
-                            <!-- item -->
-                            <a class="px-4 py-2 block capitalize font-medium text-sm tracking-wide bg-white hover:bg-gray-200 hover:text-gray-900 transition-all duration-300 ease-in-out" href="#">
-                                <i class="fad fa-comment-alt-dots text-xs mr-1"></i> chats </a>
-                            <!-- end item -->
-                            <hr />
-                            <!-- item -->
                             <a class="px-4 py-2 block capitalize font-medium text-sm tracking-wide bg-white hover:bg-gray-200 hover:text-gray-900 transition-all duration-300 ease-in-out" href="
                             <?php
                                 if ($this->session->userdata('status') == 'login') {

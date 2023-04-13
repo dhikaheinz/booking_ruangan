@@ -35,15 +35,6 @@ class Home extends CI_Controller {
 		if ($this->session->userdata('status') == '' && $this->session->userdata('level') == '') {
 			redirect('user');
 		}else if($this->session->userdata('status') == 'login' && $this->session->userdata('level') == '2'){
-
-			$data['viewTotalRequestRoom'] = $this->M_RequestRoom->viewRequestRoom()->num_rows();
-			$data['viewRequestRoomUser'] = $this->M_RequestRoom->viewRequestRoomUser()->num_rows();
-			$data['viewRequestRoomTotalApprove'] = $this->M_RequestRoom->viewRequestRoomTotalApprove()->num_rows();
-			$data['viewRequestRoomTotalPending'] = $this->M_RequestRoom->viewRequestRoomTotalPending()->num_rows();
-			$data['viewTotalUserProfil'] = $this->M_UserProfil->viewUserProfil()->num_rows();
-			$data['viewTotalDataRuangan'] = $this->M_Ruangan->viewRuangan()->num_rows();
-			$data['viewRuanganToday'] = $this->M_Ruangan->viewRuanganToday()->num_rows();
-			$data['viewRuanganTotal'] = $this->M_Ruangan->viewRuanganTotal()->num_rows();
 			$data['viewDataBooking'] = $this->M_RequestRoom->viewRequestRoomFront()->result();
 			$this->load->view('user/index', $data);
 		}else{
@@ -55,14 +46,6 @@ class Home extends CI_Controller {
 		if ($this->session->userdata('status') == '' && $this->session->userdata('level') == '') {
 			redirect('user');
 		}else if($this->session->userdata('status') == 'login' && $this->session->userdata('level') == '1'){
-
-			$data['viewTotalRequestRoom'] = $this->M_RequestRoom->viewRequestRoom()->num_rows();
-			$data['viewRequestRoomTotalApprove'] = $this->M_RequestRoom->viewRequestRoomTotalApprove()->num_rows();
-			$data['viewRequestRoomTotalPending'] = $this->M_RequestRoom->viewRequestRoomTotalPending()->num_rows();
-			$data['viewTotalUserProfil'] = $this->M_UserProfil->viewUserProfil()->num_rows();
-			$data['viewTotalDataRuangan'] = $this->M_Ruangan->viewRuangan()->num_rows();
-			$data['viewRuanganToday'] = $this->M_Ruangan->viewRuanganToday()->num_rows();
-			$data['viewRuanganTotal'] = $this->M_Ruangan->viewRuanganTotal()->num_rows();
 			$data['viewDataBooking'] = $this->M_RequestRoom->viewRequestRoomFront()->result();
 			$this->load->view('admin/index', $data);
 		}else{

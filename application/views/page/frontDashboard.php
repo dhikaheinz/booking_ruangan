@@ -3,14 +3,14 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon" />
+        <link rel="shortcut icon" href="/assets/img/logo.png" type="image/x-icon" />
         <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css" />
-        <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css" />
 		<!-- <script src="https://cdn.tailwindcss.com"></script> -->
         <link href="https://cdn.jsdelivr.net/npm/tom-select@2.0.0-rc.4/dist/css/tom-select.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/tom-select@2.0.0-rc.4/dist/js/tom-select.complete.min.js"></script>
-        <title>Halaman Depan | Booking Ruangan PKJ</title>
+        <title>Halaman Depan | Pemesanan Ruangan PolkesJaSa</title>
     </head>
     <body class="bg-gray-100">
         <!-- start navbar -->
@@ -25,7 +25,7 @@
             </div>
             <!-- end logo -->
             <!-- navbar content toggle -->
-			<a href="<?= base_url("home/pageLogin") ?>" id="navbarToggle" class="group hidden md:block md:fixed right-0 mr-6 capitalize hover:bg-gray-400 p-4 rounded-md transition-all">
+			<a href="/home/pageLogin" id="navbarToggle" class="group hidden md:block md:fixed right-0 mr-6 capitalize hover:bg-gray-400 p-4 rounded-md transition-all">
                     <h1 class="text-sm text-gray-800 group-hover:text-white font-semibold m-0 p-0 leading-none uppercase"> Login </h1>
                     <!-- <i class="fad fa-chevron-down ml-2 text-xs leading-none"></i> -->
             </a>
@@ -34,7 +34,7 @@
             <div id="navbar" class="animated sm:hidden md:fixed md:top-0 md:w-full md:left-0 md:mt-16 md:border-t md:border-b md:border-gray-200 md:p-10 md:bg-white flex-1 pl-3 flex flex-row flex-wrap justify-between items-center md:flex-col md:items-center">
                 <!-- left -->
                 <div class="text-gray-600 md:w-full sm:flex md:flex-row md:justify-evenly md:pb-10 md:mb-10 md:border-b md:border-gray-200">
-                    <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900 uppercase font-bold" href="<?= base_url() ?>" title="email">Booking Ruangan Poltekkes Jakarta 1</a>
+                    <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900 uppercase font-bold" href="<?= base_url() ?>" title="email">Pemesanan Ruangan PolkesJaSa</a>
                 </div>
                 <!-- end left -->
                 <!-- right -->
@@ -45,7 +45,7 @@
                             <!-- <div class="w-8 h-8 overflow-hidden rounded-full">
                                 <img class="w-full h-full object-cover" src="./assets/img/user.svg" />
                             </div> -->
-                            <a href="<?= base_url("home/pageLogin") ?>" class="group ml-2 capitalize flex hover:bg-gray-400 p-4 rounded-md transition-all">
+                            <a href="home/pageLogin" class="group ml-2 capitalize flex hover:bg-gray-400 p-4 rounded-md transition-all">
                                 <h1 class="text-sm text-gray-800 group-hover:text-white font-semibold m-0 p-0 leading-none uppercase"> Login </h1>
                                 <!-- <i class="fad fa-chevron-down ml-2 text-xs leading-none"></i> -->
                             </a>
@@ -79,28 +79,7 @@
                 <!-- General Report -->
                 <div class="grid grid-cols-4 gap-6 xl:grid-cols-1">
                     <!-- card -->
-                    <a href="<?= base_url("home/pageLogin") ?>" class="report-card w-full">
-                    <!-- <div > -->
-                        <div class="card">
-                            <div class="card-body flex flex-col">
-                                <!-- top -->
-                                <div class="flex flex-row justify-between items-center">
-                                    <div class="h6 text-red-700 fad fa-store"></div>
-                                    <!-- <span class="rounded-full text-white badge bg-red-400 text-xs"> 6% <i class="fal fa-chevron-down ml-1"></i> -->
-                                    </span>
-                                </div>
-                                <!-- end top -->
-                                <!-- bottom -->
-                                <div class="mt-3">
-                                    <h1 class="h3">Request Ruangan</h1>
-                                    <p>Login Terlebih Dahulu</p>
-                                </div>
-                                <!-- end bottom -->
-                            </div>
-                        </div>
-                        <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
-                    <!-- </div> -->
-                    </a>
+                    
                     <!-- card -->
                     <div class="report-card w-full">
                         <div class="card">
@@ -114,7 +93,7 @@
                                 <!-- end top -->
                                 <!-- bottom -->
                                 <div class="mt-3">
-                                    <h1 class="h3">30</h1>
+                                    <h1 class="h3"><?= $viewTotalDataRuangan ?></h1>
                                     <p>Jumlah Ruangan</p>
                                 </div>
                                 <!-- end bottom -->
@@ -136,8 +115,8 @@
                                 <!-- end top -->
                                 <!-- bottom -->
                                 <div class="mt-3">
-                                    <h1 class="h3">10</h1>
-                                    <p>Ruang Kosong</p>
+                                    <h1 class="h3"><?= $viewRuanganToday ?></h1>
+                                    <p>Kegiatan Event Hari Ini</p>
                                 </div>
                                 <!-- end bottom -->
                             </div>
@@ -158,8 +137,8 @@
                                 <!-- end top -->
                                 <!-- bottom -->
                                 <div class="mt-3">
-                                    <h1 class="h3">23</h1>
-                                    <p>Ruangan Digunakan</p>
+                                    <h1 class="h3"><?= $viewRuanganTotal ?></h1>
+                                    <p>Total Kegiatan</p>
                                 </div>
                                 <!-- end bottom -->
                             </div>

@@ -14,7 +14,7 @@
         </div>
         <div id="forminputRuangan" class="w-96 md:w-full hidden">
             <h1 class="text-2xl">Input User</h1><br>
-                <form action="<?php echo site_url('UserProfil/inputUserProfil'); ?>" method="post">
+                <form action="/UserProfil/inputUserProfil" method="post">
                     <div class="grid gap-5 mb-6 md:grid-cols-2">
                     <div>
                         <label for="first_name" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Nama User</label>
@@ -100,10 +100,10 @@
                         <td>
                         <div class="flex flex-row my-2 gap-1">
                             <div class="pt-1 px-1 bg-blue-200 hover:bg-blue-500 text-black font-bold rounded-lg">
-                                <a href="<?= site_url('UserProfil/editUserProfil/').$row->nip_nim ?>"><i class='bx bxs-edit bx-tada text-2xl' ></i></a> 
+                                <a href="/UserProfil/editUserProfil/<?= $row->nip_nim ?>"><i class='bx bxs-edit bx-tada text-2xl' ></i></a> 
                             </div>
                             <div class="pt-1 px-1 bg-orange-200 hover:bg-orange-500 text-black font-bold rounded-lg">
-                                <a href="<?= site_url('UserProfil/deleteUserProfil/').$row->nip_nim ?>"><box-icon name='trash' type='solid' animation='tada' ></box-icon></a>
+                                <a href="/UserProfil/deleteUserProfil/<?= $row->nip_nim ?>"><box-icon name='trash' type='solid' animation='tada' ></box-icon></a>
                             </div>
                         </div>
                         </td>

@@ -65,22 +65,4 @@ class M_RequestRoom extends CI_Model {
         $this->db->delete('tbl_booking');
         $this->session->set_flashdata('notif', '<p class="hide-it text-center text-white bg-yellow-600 my-3 p-2 rounded-md">Berhasil Delete Request Ruangan</p>');
     }
-
-    function viewRequestRoomTotalApprove(){
-        $this->db->select('*');
-        $this->db->from('tbl_booking');
-        $this->db->join('tbl_room', 'tbl_booking.id_room = tbl_room.id_room');
-        $this->db->where('tbl_booking.status_booking', '1');
-        
-        return $query = $this->db->get();
-    }
-
-    function viewRequestRoomTotalPending(){
-        $this->db->select('*');
-        $this->db->from('tbl_booking');
-        $this->db->join('tbl_room', 'tbl_booking.id_room = tbl_room.id_room');
-        $this->db->where('tbl_booking.status_booking', '0');
-        
-        return $query = $this->db->get();
-    }
 }
