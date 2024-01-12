@@ -2,19 +2,19 @@
 <div class="h-screen flex flex-row flex-wrap">
     <!-- start sidebar -->
     <?php $this->load->view('template/sideAdmin'); ?>
-    <div class="bg-gray-100 flex-1 flex-row p-6 md:mt-24">
+    <div class="w-1/2 bg-gray-100 flex-1 flex-row p-6 md:mt-24">
         <?php
             echo $this->session->flashdata('notif'); 
         ?>
         <div class="flex flex-row justify-start">
             <div>
                 <button id="btnInputRuangan" onclick="popUpInputRuangan()" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
-                    font-medium rounded-lg text-sm w-full px-5 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Tambah Request Ruangan</button>
+                    font-medium rounded-lg text-sm w-full px-5 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Tambah Permintaan Ruangan</button>
             </div>
         </div>
         <div id="forminputRuangan" class="w-96 md:w-full hidden">
-            <h1 class="text-2xl">Request Ruangan</h1><br>
-                <form action="<?php echo site_url('RequestRuangan/inputRequestRuangan'); ?>" method="post">
+            <h1 class="text-2xl">Permintaan Ruangan</h1><br>
+                <form action="/RequestRuangan/inputRequestRuangan" method="post">
                     <div class="grid gap-5 mb-6 md:grid-cols-2">
                         <div>
                             <label for="first_name" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Judul Kegiatan</label>
@@ -35,18 +35,12 @@
                                 ?>
                             </select>
                         </div>
-                        <!-- <div>
-                            <label for="last_name" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Total Jam Digunakan</label>
-                            <input type="text" name="jml_jam" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
-                            focus:border-blue-500 block w-full p-1 md:p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
-                            dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan Total Jam" required>
-                        </div> -->
                         <div>
                             <label for="company" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Jam Mulai</label>
-                            <!-- <input type="text" name="jam_mulai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
+                            <input type="time" name="jam_mulai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
                             focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
-                            dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required> -->
-                            <select name="jam_mulai" id="from" class="select-option2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
+                            dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                            <!-- <select name="jam_mulai" id="from" class="select-option2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
                             focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
                             dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option value="">Pilih Jam Mulai</option>
@@ -65,11 +59,14 @@
                                 <option value="19:00">19:00</option>
                                 <option value="20:00">20:00</option>
                                 <option value="21:00">21:00</option>
-                            </select>
+                            </select> -->
                         </div>  
                         <div>
                             <label for="website" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Jam Selesai</label>
-                            <select name="jam_selesai" id="from" class="select-option3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
+                            <input type="time" name="jam_selesai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
+                            focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
+                            dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                            <!-- <select name="jam_selesai" id="from" class="select-option3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
                             focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
                             dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option value="">Pilih Jam Selesai</option>
@@ -88,7 +85,7 @@
                                 <option value="19:00">19:00</option>
                                 <option value="20:00">20:00</option>
                                 <option value="21:00">21:00</option>
-                            </select>
+                            </select> -->
                         </div>
                         <div>
                             <label for="website" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Tgl Mulai</label>
@@ -96,25 +93,25 @@
                             focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
                             dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
                         </div>
-                        <div>
+                        <!-- <div>
                             <label for="website" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Tgl Selesai</label>
                             <input type="date" name="tgl_selesai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
                             focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
                             dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="flex flex-row gap-3">
                         <button id="btnCloseInputRuangan" onclick="closePopUpInputRuangan()" type="button" class="text-white bg-yellow-600 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
                         font-medium rounded-lg text-sm w-full px-5 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Tutup</button>
                         <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
-                        font-medium rounded-lg text-sm w-full px-5 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                        font-medium rounded-lg text-sm w-full px-5 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kirim</button>
                     </div>
                 </form>
         </div>
             
             <!-- Tabel -->
             <div class="w-full mt-5">
-                <h1 class="text-2xl">Riwayat Request Booking</h1><br>
+                <h1 class="text-2xl">Riwayat Permintaan Ruangan</h1><br>
                 <!-- Button trigger modal -->
                 <?php 
                 // print_r($viewDataRuangan);
@@ -127,31 +124,37 @@
                         <th>Kegiatan</th>
                         <th>Jam Kegiatan</th>
                         <th>Tgl Kegiatan</th>
-                        <th>Status Booking</th>
+                        <th>Status Permintaan</th>
                         <!-- <th>Deskripsi Ruangan</th> -->
-                        <th>Action</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php 
-                    foreach ($viewDataBooking as $row) { ?>
+                    foreach ($viewDataBooking as $row) { 
+                        // print_r($row);
+                        ?>
                       <tr>
                         <td><?php echo $row->nama_room; ?></td>
-                        <td><?php echo $row->id_profil; ?></td>
+                        <td>
+                            <span class="p-2 rounded-lg" style="background-color:<?php echo $row->color_user; ?>;">
+                                <?php echo $row->nama_user; ?>
+                            </span>
+                        </td>
                         <td><?php echo $row->kegiatan; ?></td>
                         <td><?php echo $row->jam_mulai .' - '. $row->jam_selesai;?></td>
-                        <td><?php echo $row->tgl_mulai .' - '. $row->tgl_selesai;?></td>
+                        <td><?php echo $row->tgl_mulai; ?></td>
                         <td><?php 
                         if ($row->status_booking == "1") {
-                            echo '<p class="p-2 bg-green-500 text-black font-bold rounded-lg">Accepted</p>';
+                            echo '<p class="p-2 bg-green-500 text-black font-bold rounded-lg">Diterima</p>';
                         } elseif ($row->status_booking == "0") {
-                            echo '<p class="p-2 bg-yellow-500 text-black font-bold rounded-lg">Pending</p>';
+                            echo '<p class="p-2 bg-yellow-500 text-black font-bold rounded-lg">Menunggu</p>';
                         };
                         ?></td>
                         <td>
                         <div class="flex flex-row my-2 gap-1">
                             <div class="pt-1 px-1 bg-orange-400 hover:bg-orange-500 text-black font-bold rounded-lg">
-                            <a href="<?= site_url('requestRuangan/deleteRequestRuangan/').$row->id_booking ?>"><box-icon name='trash' type='solid' animation='tada' ></a>
+                            <a href="<?php echo '/requestRuangan/deleteRequestRuangan/'.$row->id_booking ?>"><box-icon name='trash' type='solid' animation='tada' ></a>
                             </div>
                         </div>
                         </td>
@@ -241,20 +244,20 @@
             direction: "asc"
         }
     });
-        new TomSelect(".select-option2",{
-        create: false,
-        sortField: {
-            field: "text",
-            direction: "asc"
-        }
-    });
-        new TomSelect(".select-option3",{
-        create: false,
-        sortField: {
-            field: "text",
-            direction: "asc"
-        }
-    });
+    //     new TomSelect(".select-option2",{
+    //     create: false,
+    //     sortField: {
+    //         field: "text",
+    //         direction: "asc"
+    //     }
+    // });
+    //     new TomSelect(".select-option3",{
+    //     create: false,
+    //     sortField: {
+    //         field: "text",
+    //         direction: "asc"
+    //     }
+    // });
 
         var btnInputRuangan = document.getElementById("btnInputRuangan");
         var forminputRuangan = document.getElementById("forminputRuangan");

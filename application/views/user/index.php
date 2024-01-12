@@ -5,52 +5,34 @@
     <?php $this->load->view('template/sideAdmin'); ?>
             <!-- end sidbar -->
             <!-- strat content -->
-            <div class="bg-gray-100 flex-1 p-6 md:mt-24">
+            <div class="w-1/2 bg-gray-100 flex-1 p-6 md:mt-24">
                 <!-- General Report -->
                 <div class="grid grid-cols-4 gap-6 xl:grid-cols-1">
                     <!-- card -->
-                    <div class="report-card">
+                    <div class="report-card w-full">
                         <div class="card">
                             <div class="card-body flex flex-col">
                                 <!-- top -->
                                 <div class="flex flex-row justify-between items-center">
-                                    <div class="h6 text-indigo-700 fad fa-book"></div>
-                                    <!-- <span class="rounded-full text-white badge bg-teal-400 text-xs"> 12% <i class="fal fa-chevron-up ml-1"></i> -->
-                                    </span>
-                                </div>
-                                <!-- end top -->
-                                <!-- bottom -->
-                                <div class="mt-8">
-                                    <h1 class="h5"><?= $viewRequestRoomUser ?></h1>
-                                    <p>Total Data yang Anda Request</p>
-                                </div>
-                                <!-- end bottom -->
-                            </div>
-                        </div>
-                        <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
-                    </div>
-                    <!-- end card -->
-                    <!-- card -->
-                    <div class="report-card">
-                        <div class="card">
-                            <div class="card-body flex flex-col">
-                                <!-- top -->
-                                <div class="flex flex-row justify-between items-center">
-                                    <div class="h6 text-red-700 fad fa-store"></div>
+                                    <div class="h6 text-red-700 fad fa-receipt"></div>
+                                    <!-- <i class="fa-solid fa-receipt"></i> -->
                                     <!-- <span class="rounded-full text-white badge bg-red-400 text-xs"> 6% <i class="fal fa-chevron-down ml-1"></i> -->
                                     </span>
                                 </div>
                                 <!-- end top -->
                                 <!-- bottom -->
-                                <div class="mt-8">
-                                    <h1 class="h5"><?= $viewTotalDataRuangan ?></h1>
-                                    <p>Jumlah Ruangan</p>
+                                <div class="mt-3">
+                                    <h1 class="h3"><?php $kelasKosong = 18 - $viewRequestRoomTotalRuanganNow; 
+                                    
+                                    echo $kelasKosong ?></h1>
+                                    <p>Kelas Kosong Pada Hari Ini</p>
                                 </div>
                                 <!-- end bottom -->
                             </div>
                         </div>
                         <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
                     </div>
+                    
                     <!-- end card -->
                     <!-- card -->
                     <div class="report-card">
@@ -105,8 +87,27 @@
                             <h1 class="text-2xl font-bold lg:text-base">Jadwal Kegiatan</h1><br>
                         </div>
                         <div class="mx-7">
-                            <h1 class="text-2xl lg:text-base">Tanggal Hari ini: <?php echo date("d-m-Y"); ?></h1><br>
+                            <h1 class="text-2xl lg:text-base my-1">Hari : <?php 
+                                // print_r($viewTglDataBooking);
+                                if (!empty($viewTglDataBooking->tgl_mulai)) {
+                                    $dateIndo = $viewTglDataBooking->tgl_mulai;
+                                    $ex = explode("-",$dateIndo);
+                            
+                                    $tgl = $ex[2].'-'.$ex[1].'-'.$ex[0];
+                                    echo $tgl;
+                                } else if (!empty($viewDataBooking)) {
+                                    echo date("d-m-Y");
+                                } else {
+                                    echo "Tidak Ada Kegiatan Hari ini";
+                                }
+                                
+                                // echo $viewTglDataBooking->tgl_mulai;
+                            ?></h1>
                         </div>
+                        <form action="/home/filterTanggalUser" method="post">
+                        <div>Search Tanggal : <input type="date" class="w-52 px-1 py-1 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 shadow-sm" name="tgl_cari">
+                        <button type="submit" class="bg-green-600 rounded-md hover:bg-green-900 mt-2 mx-1 text-white p-2">Cari</button></div>
+                        </form>
                     </div>
                     <!-- Button trigger modal -->
                     <table id="example" class="display nowrap" style="width: 100%">
@@ -127,7 +128,11 @@
                             <td><?php echo $row->nama_room; ?></td>
                             <td><?php echo $row->kegiatan; ?></td>
                             <td><?php echo $row->jam_mulai .' - '. $row->jam_selesai;?></td>
-                            <td><?php echo $row->id_profil; ?></td>
+                            <td>
+                            <span class="p-2 rounded-lg" style="background-color:<?php echo $row->color_user; ?>;">
+                                <?php echo $row->nama_user; ?>
+                            </span>
+                        </td>
                         </tr>
                         </div>
                         <?php } ?>

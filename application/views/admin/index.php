@@ -5,10 +5,11 @@
     <?php $this->load->view('template/sideAdmin'); ?>
             <!-- end sidbar -->
             <!-- strat content -->
-            <div class="bg-gray-100 flex-1 p-6 md:mt-24">
+            <div class="bg-gray-100 flex-1 p-6 md:mt-24 w-1/2">
                 <!-- General Report -->
                 <div class="grid grid-cols-4 gap-6 xl:grid-cols-1">
                     <!-- card -->
+                    
                     <div class="report-card">
                         <div class="card">
                             <div class="card-body flex flex-col">
@@ -66,7 +67,7 @@
                                 <!-- bottom -->
                                 <div class="mt-8">
                                     <h1 class="h5"><?= $viewRequestRoomTotalApprove ?></h1>
-                                    <p class="text-base font-bold text-black">Total Permintaan Sudah di Approve</p>
+                                    <p class="text-base font-bold text-black">Total Permintaan Sudah di Terima</p>
                                 </div>
                                 <!-- end bottom -->
                             </div>
@@ -88,7 +89,7 @@
                                 <!-- bottom -->
                                 <div class="mt-8">
                                     <h1 class="h5"><?= $viewRequestRoomTotalPending ?></h1>
-                                    <p class="text-base font-bold text-black">Total Permintaan Pending</p>
+                                    <p class="text-base font-bold text-black">Total Permintaan Menunggu</p>
                                 </div>
                                 <!-- end bottom -->
                             </div>
@@ -105,8 +106,27 @@
                             <h1 class="text-2xl font-bold lg:text-base">Jadwal Kegiatan</h1><br>
                         </div>
                         <div class="mx-7">
-                            <h1 class="text-2xl lg:text-base">Tanggal Hari ini: <?php echo date("d-m-Y"); ?></h1><br>
+                            <h1 class="text-2xl lg:text-base my-1">Hari : <?php 
+                                // print_r($viewTglDataBooking);
+                                if (!empty($viewTglDataBooking->tgl_mulai)) {
+                                    $dateIndo = $viewTglDataBooking->tgl_mulai;
+                                    $ex = explode("-",$dateIndo);
+                            
+                                    $tgl = $ex[2].'-'.$ex[1].'-'.$ex[0];
+                                    echo $tgl;
+                                } else if (!empty($viewDataBooking)) {
+                                    echo date("d-m-Y");
+                                } else {
+                                    echo "Tidak Ada Kegiatan Hari ini";
+                                }
+                                
+                                // echo $viewTglDataBooking->tgl_mulai;
+                            ?></h1>
                         </div>
+                        <form action="/home/filterTanggalAdmin" method="post">
+                        <div>Search Tanggal : <input type="date" class="w-52 px-1 py-1 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 shadow-sm" name="tgl_cari">
+                        <button type="submit" class="bg-green-600 rounded-md hover:bg-green-900 mt-2 mx-1 text-white p-2">Cari</button></div>
+                        </form>
                     </div>
                     <!-- Button trigger modal -->
                     <?php 
@@ -124,13 +144,25 @@
                     </thead>
                     <tbody>
                         <?php 
-                        foreach ($viewDataBooking as $row) { ?>
+                        foreach ($viewDataBooking as $row) { 
+                            // print_r($row);
+                            ?>
                         <tr>
-                            <td><?php echo $row->tgl_mulai; ?></td>
+                            <td><?php
+                            $dateIndo = $row->tgl_mulai;
+                            $ex = explode("-",$dateIndo);
+                    
+                            $tgl = $ex[2].'-'.$ex[1].'-'.$ex[0];
+                            echo $tgl;
+                            ?></td>
                             <td><?php echo $row->nama_room; ?></td>
                             <td><?php echo $row->kegiatan; ?></td>
                             <td><?php echo $row->jam_mulai .' - '. $row->jam_selesai;?></td>
-                            <td><?php echo $row->id_profil; ?></td>
+                            <td>
+                                <span class="p-2 rounded-lg" style="background-color:<?php echo $row->color_user; ?>;">
+                                    <?php echo $row->nama_user; ?>
+                                </span>
+                            </td>
                         </tr>
                         </div>
                         <?php } ?>

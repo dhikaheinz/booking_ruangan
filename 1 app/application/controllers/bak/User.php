@@ -1,0 +1,51 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class User extends CI_Controller {
+
+	function __construct()
+    {
+        parent::__construct();
+		$this->load->model('M_User');
+		$this->load->model('M_RequestRoom');
+    }
+
+	public function index()
+	{
+		if ($this->session->userdata('status') == 'login') {
+			redirect('Home/index');
+		}
+		$data['viewDataBooking'] = $this->M_RequestRoom->viewRequestRoomFront()->result();
+		$this->load->view('page/frontDashboard', $data);
+	}
+
+	function aksi_login(){
+		$user = $this->input->post('user');
+		$pass = $this->input->post('pass');
+
+		$result = $this->db->get_where('tbl_user', array('nip_nim' => $user, 'pass' => $pass));
+		$data_user = $result->result();
+		if($result->num_rows() > 0){
+			foreach ($data_user as $row) {
+			$data_session = array(
+				'id_user' => $row->id_user,
+				'nip_nim' => $user,
+				'level' => $row->level,
+				'status' => "login",
+				);
+			$this->session->set_userdata($data_session);
+			}
+			$this->session->set_flashdata('notif', '<p class="hide-it text-center text-white bg-green-600 my-3 p-2 rounded-md">Berhasil Login</p>');
+			redirect('home');
+ 
+		}else{
+			$this->session->set_flashdata('notif', '<p class="hide-it text-center text-white bg-red-500 my-3 p-2 rounded-md">Data NIP/NIM Dan Password Salah</p>');
+			redirect('Home/pageLogin');
+		}
+	}
+
+	function logout(){
+		$this->session->sess_destroy();
+		redirect('user');
+	}
+}

@@ -45,6 +45,7 @@ class Home extends CI_Controller {
 			$data['viewRuanganToday'] = $this->M_Ruangan->viewRuanganToday()->num_rows();
 			$data['viewRuanganTotal'] = $this->M_Ruangan->viewRuanganTotal()->num_rows();
 			$data['viewDataBooking'] = $this->M_RequestRoom->viewRequestRoomFront()->result();
+			$data['viewRequestRoomTotalRuanganNow'] = $this->M_RequestRoom->viewRequestRoomTotalRuanganNow()->num_rows();
 			$this->load->view('user/index', $data);
 		}else{
 			redirect('user');
@@ -64,11 +65,11 @@ class Home extends CI_Controller {
 			$data['viewRuanganToday'] = $this->M_Ruangan->viewRuanganToday()->num_rows();
 			$data['viewRuanganTotal'] = $this->M_Ruangan->viewRuanganTotal()->num_rows();
 			$data['viewDataBooking'] = $this->M_RequestRoom->viewRequestRoomFront()->result();
+			$data['viewRequestRoomTotalRuanganNow'] = $this->M_RequestRoom->viewRequestRoomTotalRuanganNow()->num_rows();
 			$this->load->view('admin/index', $data);
 		}else{
 			redirect('user');
 		}
-	
 	}
 
 	function pageInputRuangan(){
@@ -110,6 +111,89 @@ class Home extends CI_Controller {
 			// echo $this->session->userdata('user');
 			$this->load->view('user/pageInputRequestRoom', $data);
 			// print_r($data['viewDataBooking']);
+		}else{
+			redirect('user');
+		}
+	}
+
+	function filterTanggal(){
+		$tgl_cari = $this->input->post("tgl_cari");
+
+		$data['viewDataBookingKep'] = $this->M_RequestRoom->viewRequestRoomFrontKepDate($tgl_cari)->result();
+		$data['viewDataBookingKeb'] = $this->M_RequestRoom->viewRequestRoomFrontKebDate($tgl_cari)->result();
+		$data['viewDataBookingJKG'] = $this->M_RequestRoom->viewRequestRoomFrontJKGDate($tgl_cari)->result();
+		$data['viewDataBookingOP'] = $this->M_RequestRoom->viewRequestRoomFrontOPDate($tgl_cari)->result();
+		$data['viewDataBookingDir'] = $this->M_RequestRoom->viewRequestRoomFrontDirDate($tgl_cari)->result();
+		$data['viewDataBookingAdm'] = $this->M_RequestRoom->viewRequestRoomFrontAdmDate($tgl_cari)->result();
+		$data['viewDataBookingOther'] = $this->M_RequestRoom->viewRequestRoomFrontOtherDate($tgl_cari)->result();
+
+		// $data['viewDataBooking'] = $this->M_RequestRoom->viewRequestRoomFrontbyDate($tgl_cari)->result();
+		// $data['viewTglDataBooking'] = $this->M_RequestRoom->viewRequestRoomFrontbyDate($tgl_cari)->row();
+		if ($this->session->userdata('status') == 'login') {
+			redirect('Home/index');
+		}
+		// $data['viewDataBooking'] = $this->M_RequestRoom->viewRequestRoomFront()->result();
+		$data['viewTotalDataRuangan'] = $this->M_Ruangan->viewRuangan()->num_rows();
+		$data['viewRuanganToday'] = $this->M_Ruangan->viewRuanganToday()->num_rows();
+		$data['viewRuanganTotal'] = $this->M_Ruangan->viewRuanganTotal()->num_rows();
+		$data['viewRequestRoomTotalRuanganNow'] = $this->M_RequestRoom->viewRequestRoomTotalRuanganTgl($tgl_cari)->num_rows();
+		$this->load->view('page/frontDashboard', $data);
+	}
+
+	function filterTanggalUser(){
+		$tgl_cari = $this->input->post("tgl_cari");
+
+			$data['viewDataBookingKep'] = $this->M_RequestRoom->viewRequestRoomFrontKep()->result();
+			$data['viewDataBookingKeb'] = $this->M_RequestRoom->viewRequestRoomFrontKeb()->result();
+			$data['viewDataBookingJKG'] = $this->M_RequestRoom->viewRequestRoomFrontJKG()->result();
+			$data['viewDataBookingOP'] = $this->M_RequestRoom->viewRequestRoomFrontOP()->result();
+			$data['viewDataBookingDir'] = $this->M_RequestRoom->viewRequestRoomFrontDir()->result();
+			$data['viewDataBookingAdm'] = $this->M_RequestRoom->viewRequestRoomFrontAdm()->result();
+			$data['viewDataBookingOther'] = $this->M_RequestRoom->viewRequestRoomFrontOther()->result();
+	
+			$data['viewDataBooking'] = $this->M_RequestRoom->viewRequestRoomFrontbyDate($tgl_cari)->result();
+			$data['viewTglDataBooking'] = $this->M_RequestRoom->viewRequestRoomFrontbyDate($tgl_cari)->row();
+			$data['viewTotalRequestRoom'] = $this->M_RequestRoom->viewRequestRoom()->num_rows();
+			$data['viewRequestRoomTotalApprove'] = $this->M_RequestRoom->viewRequestRoomTotalApprove()->num_rows();
+			$data['viewRequestRoomTotalPending'] = $this->M_RequestRoom->viewRequestRoomTotalPending()->num_rows();
+			$data['viewTotalUserProfil'] = $this->M_UserProfil->viewUserProfil()->num_rows();
+			$data['viewTotalDataRuangan'] = $this->M_Ruangan->viewRuangan()->num_rows();
+			$data['viewRuanganToday'] = $this->M_Ruangan->viewRuanganToday()->num_rows();
+			$data['viewRuanganTotal'] = $this->M_Ruangan->viewRuanganTotal()->num_rows();
+			// $data['viewDataBooking'] = $this->M_RequestRoom->viewRequestRoomFront()->result();
+			$data['viewRequestRoomTotalRuanganNow'] = $this->M_RequestRoom->viewRequestRoomTotalRuanganTgl($tgl_cari)->num_rows();
+			
+
+			$this->load->view('user/index', $data);
+	}
+
+	function filterTanggalAdmin(){
+		if ($this->session->userdata('status') == '' && $this->session->userdata('level') == '') {
+			redirect('user');
+		}else if($this->session->userdata('status') == 'login' && $this->session->userdata('level') == '1'){
+
+			$tgl_cari = $this->input->post("tgl_cari");
+
+			$data['viewDataBookingKep'] = $this->M_RequestRoom->viewRequestRoomFrontKep()->result();
+			$data['viewDataBookingKeb'] = $this->M_RequestRoom->viewRequestRoomFrontKeb()->result();
+			$data['viewDataBookingJKG'] = $this->M_RequestRoom->viewRequestRoomFrontJKG()->result();
+			$data['viewDataBookingOP'] = $this->M_RequestRoom->viewRequestRoomFrontOP()->result();
+			$data['viewDataBookingDir'] = $this->M_RequestRoom->viewRequestRoomFrontDir()->result();
+			$data['viewDataBookingAdm'] = $this->M_RequestRoom->viewRequestRoomFrontAdm()->result();
+			$data['viewDataBookingOther'] = $this->M_RequestRoom->viewRequestRoomFrontOther()->result();
+	
+			$data['viewDataBooking'] = $this->M_RequestRoom->viewRequestRoomFrontbyDate($tgl_cari)->result();
+			$data['viewTglDataBooking'] = $this->M_RequestRoom->viewRequestRoomFrontbyDate($tgl_cari)->row();
+			$data['viewTotalRequestRoom'] = $this->M_RequestRoom->viewRequestRoom()->num_rows();
+			$data['viewRequestRoomTotalApprove'] = $this->M_RequestRoom->viewRequestRoomTotalApprove()->num_rows();
+			$data['viewRequestRoomTotalPending'] = $this->M_RequestRoom->viewRequestRoomTotalPending()->num_rows();
+			$data['viewTotalUserProfil'] = $this->M_UserProfil->viewUserProfil()->num_rows();
+			$data['viewTotalDataRuangan'] = $this->M_Ruangan->viewRuangan()->num_rows();
+			$data['viewRuanganToday'] = $this->M_Ruangan->viewRuanganToday()->num_rows();
+			$data['viewRuanganTotal'] = $this->M_Ruangan->viewRuanganTotal()->num_rows();
+			// $data['viewDataBooking'] = $this->M_RequestRoom->viewRequestRoomFront()->result();
+			$data['viewRequestRoomTotalRuanganNow'] = $this->M_RequestRoom->viewRequestRoomTotalRuanganTgl($tgl_cari)->num_rows();
+			$this->load->view('admin/index', $data);
 		}else{
 			redirect('user');
 		}

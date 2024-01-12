@@ -2,7 +2,7 @@
 <div class="h-screen flex flex-row flex-wrap">
     <!-- start sidebar -->
     <?php $this->load->view('template/sideAdmin'); ?>
-    <div class="bg-gray-100 flex-1 flex-row p-6 md:mt-24">
+    <div class="w-1/2 bg-gray-100 flex-1 flex-row p-6 md:mt-24">
         <?php
             echo $this->session->flashdata('notif'); 
         ?>
@@ -18,7 +18,7 @@
                     <div class="grid gap-5 mb-6 md:grid-cols-2">
                         <div>
                             <label for="first_name" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Judul Kegiatan</label>
-                            <input type="text" name="kegiatan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                            <input type="text" maxlength="50" name="kegiatan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                             focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
                             dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan Judul Kegiatan" required>
                         </div>
@@ -43,10 +43,10 @@
                         </div> -->
                         <div>
                             <label for="company" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Jam Mulai</label>
-                            <!-- <input type="text" name="jam_mulai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
+                            <input type="time" name="jam_mulai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
                             focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
-                            dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required> -->
-                            <select name="jam_mulai" id="from" class="select-option2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
+                            dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                            <!-- <select name="jam_mulai" id="from" class="select-option2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
                             focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
                             dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option value="">Pilih Jam Mulai</option>
@@ -65,10 +65,14 @@
                                 <option value="19:00">19:00</option>
                                 <option value="20:00">20:00</option>
                                 <option value="21:00">21:00</option>
-                            </select>
+                            </select> -->
                         </div>  
                         <div>
-                            <label for="website" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Jam Selesai</label>
+                        <label for="company" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Jam Selesai</label>
+                        <input type="time" name="jam_selesai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
+                            focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
+                            dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                            <!-- <label for="website" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Jam Selesai</label>
                             <select name="jam_selesai" id="from" class="select-option3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
                             focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
                             dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -88,7 +92,7 @@
                                 <option value="19:00">19:00</option>
                                 <option value="20:00">20:00</option>
                                 <option value="21:00">21:00</option>
-                            </select>
+                            </select> -->
                         </div>
                         <div>
                             <label for="website" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Tgl Mulai</label>
@@ -97,10 +101,10 @@
                             dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
                         </div>
                         <div>
-                            <label for="website" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Tgl Selesai</label>
+                            <!-- <label for="website" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Tgl Selesai</label>
                             <input type="date" name="tgl_selesai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
                             focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
-                            dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
+                            dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" hidden> -->
                         </div>
                     </div>
                     <div class="flex flex-row gap-3">
@@ -127,25 +131,31 @@
                         <th>Kegiatan</th>
                         <th>Jam Kegiatan</th>
                         <th>Tgl Kegiatan</th>
-                        <th>Status Permintaan</th>
+                        <th>Status</th>
                         <!-- <th>Deskripsi Ruangan</th> -->
-                        <th>Action</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php 
-                    foreach ($viewDataBooking as $row) { ?>
+                    foreach ($viewDataBooking as $row) { 
+                        // print_r($row);
+                        ?>
                       <tr>
                         <td><?php echo $row->nama_room; ?></td>
-                        <td><?php echo $row->id_profil; ?></td>
+                        <td>
+                            <span class="p-2 rounded-lg" style="background-color:<?php echo $row->color_user; ?>;">
+                                <?php echo $row->nama_user; ?>
+                            </span>
+                        </td>
                         <td><?php echo $row->kegiatan; ?></td>
                         <td><?php echo $row->jam_mulai .' - '. $row->jam_selesai;?></td>
-                        <td><?php echo $row->tgl_mulai .' - '. $row->tgl_selesai;?></td>
+                        <td><?php echo $row->tgl_mulai; ?></td>
                         <td><?php 
                         if ($row->status_booking == "1") {
-                            echo '<p class="p-2 bg-green-500 text-black font-bold rounded-lg">Accepted</p>';
+                            echo '<p class="p-2 bg-green-500 text-black font-bold rounded-lg">DIterima</p>';
                         } elseif ($row->status_booking == "0") {
-                            echo '<p class="p-2 bg-yellow-500 text-black font-bold rounded-lg">Pending</p>';
+                            echo '<p class="p-2 bg-yellow-500 text-black font-bold rounded-lg">Menunggu</p>';
                         };
                         ?></td>
                         <td>
@@ -157,11 +167,11 @@
                                     echo '<div class="pt-1 px-1 bg-green-400 hover:bg-green-500 text-black font-bold rounded-lg"><a href="'.site_url('requestRuangan/approveRequestRuangan/').$row->id_booking.'"><box-icon name="check-circle" type="solid" animation="tada" ></box-icon></a></div>';
                                 };
                                 ?>
-                                <div class="pt-1 px-1 bg-blue-200 hover:bg-blue-500 text-black font-bold rounded-lg">
-                                    <a href="/requestRuangan/editRequestRuangan/ <?= $row->id_booking ?>"><i class='bx bxs-edit bx-tada text-2xl' ></i></a>
+                               <div class="pt-1 px-1 bg-blue-200 hover:bg-blue-500 text-black font-bold rounded-lg">
+                                    <a href="/requestRuangan/editRequestRuangan/<?= $row->id_booking ?>"><i class='bx bxs-edit bx-tada text-2xl' ></i></a>
                                 </div>
                                 <div class="pt-1 px-1 bg-orange-400 hover:bg-orange-500 text-black font-bold rounded-lg">
-                                    <a href="/requestRuangan/deleteRequestRuangan/ <?= $row->id_booking ?>"><box-icon name='trash' type='solid' animation='tada' ></box-icon></a>
+                                    <a href="/requestRuangan/deleteRequestRuangan/<?= $row->id_booking ?>" onclick="return confirm('Are you sure you want to delete this item?');"><box-icon name='trash' type='solid' animation='tada' ></box-icon></a>
                                 </div>
                             </div>
                         </td>
@@ -238,34 +248,34 @@
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
     <?php $this->load->view('template/footer'); ?>
     <script>
-        $(document).ready(function () {
-            $('#example').DataTable({
-                scrollX: true,
-                "ordering": false,
-            });
+    $(document).ready(function () {
+        $('#example').DataTable({
+            scrollX: true,
+            "ordering": false,
         });
+    });
 
-        new TomSelect(".select-option",{
-        create: false,
-        sortField: {
-            field: "text",
-            direction: "asc"
-        }
+    new TomSelect(".select-option",{
+    create: false,
+    sortField: {
+        field: "text",
+        direction: "asc"
+    }
     });
-        new TomSelect(".select-option2",{
-        create: false,
-        sortField: {
-            field: "text",
-            direction: "asc"
-        }
-    });
-        new TomSelect(".select-option3",{
-        create: false,
-        sortField: {
-            field: "text",
-            direction: "asc"
-        }
-    });
+    //     new TomSelect(".select-option2",{
+    //     create: false,
+    //     sortField: {
+    //         field: "text",
+    //         direction: "asc"
+    //     }
+    // });
+    //     new TomSelect(".select-option3",{
+    //     create: false,
+    //     sortField: {
+    //         field: "text",
+    //         direction: "asc"
+    //     }
+    // });
 
         var btnInputRuangan = document.getElementById("btnInputRuangan");
         var forminputRuangan = document.getElementById("forminputRuangan");
@@ -291,6 +301,7 @@
 
         $('.hide-it').delay(3000).fadeOut(1000);
     </script>
+    
     <!-- end script -->
 </body>
 </html>

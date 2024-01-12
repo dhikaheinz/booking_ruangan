@@ -2,7 +2,7 @@
 <div class="h-screen flex flex-row flex-wrap">
     <!-- start sidebar -->
     <?php $this->load->view('template/sideAdmin'); ?>
-    <div class="bg-gray-100 flex-1 flex-row p-6 md:mt-24">
+    <div class="w-1/2 bg-gray-100 flex-1 flex-row p-6 md:mt-24">
         <?php
             echo $this->session->flashdata('notif'); 
         ?>
@@ -13,12 +13,12 @@
             </div>
         </div>
         <div id="forminputRuangan" class="w-96 md:w-full">
-            <h1 class="text-2xl">Edit Request Ruangan</h1><br>
-                <form action="/RequestRuangan/updateRequestRuangan/ <?= $data_request_ruangan->id_booking; ?>" method="post">
+            <h1 class="text-2xl">Edit Permintaan Ruangan</h1><br>
+                <form action="/RequestRuangan/updateRequestRuangan/<?= $data_request_ruangan->id_booking; ?>" method="post">
                     <div class="grid gap-5 mb-6 md:grid-cols-2">
                         <div>
                             <label for="first_name" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Judul Kegiatan</label>
-                            <input type="text" name="kegiatan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                            <input type="text" maxlength="50" name="kegiatan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                             focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
                             dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan Judul Kegiatan" value="<?= $data_request_ruangan->kegiatan ?>" required>
                         </div>
@@ -46,10 +46,12 @@
                             <!-- <input type="text" name="jam_mulai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
                             focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
                             dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required> -->
-                            <select name="jam_mulai" id="from" class="select-option2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
+                            <input type="time" name="jam_mulai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
+                            focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
+                            dark:focus:ring-blue-500 dark:focus:border-blue-500" value="<?= $data_request_ruangan->jam_mulai ?>" required>
+                            <!-- <select name="jam_mulai" id="from" class="select-option2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
                             focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
                             dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option value="<?= $data_request_ruangan->jam_mulai ?>"><?= $data_request_ruangan->jam_mulai ?></option>
                                 <option value="7:00">07:00</option>
                                 <option value="8:00">08:00</option>
                                 <option value="9:00">09:00</option>
@@ -65,15 +67,18 @@
                                 <option value="19:00">19:00</option>
                                 <option value="20:00">20:00</option>
                                 <option value="21:00">21:00</option>
-                            </select>
+                            </select> -->
                         </div>  
                         <div>
-                            <label for="website" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Jam Selesai</label>
-                            <select name="jam_selesai" id="from" class="select-option3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
+                            <!-- <label for="website" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Jam Selesai</label> -->
+                            <label for="company" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Jam Selesai</label>
+                            <input type="time" name="jam_selesai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
+                            focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
+                            dark:focus:ring-blue-500 dark:focus:border-blue-500" value="<?= $data_request_ruangan->jam_selesai ?>" required>
+                            <!-- <select name="jam_selesai" id="from" class="select-option3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
                             focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
                             dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option value="<?= $data_request_ruangan->jam_selesai ?>"><?= $data_request_ruangan->jam_selesai ?></option>
-                                <option value="7:00">07:00</option>
+                               
                                 <option value="8:00">08:00</option>
                                 <option value="9:00">09:00</option>
                                 <option value="10:00">10:00</option>
@@ -88,7 +93,7 @@
                                 <option value="19:00">19:00</option>
                                 <option value="20:00">20:00</option>
                                 <option value="21:00">21:00</option>
-                            </select>
+                            </select> -->
                         </div>
                         <div>
                             <label for="website" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Tgl Mulai</label>
@@ -96,25 +101,25 @@
                             focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
                             dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" value="<?= $data_request_ruangan->tgl_mulai ?>" required>
                         </div>
-                        <div>
+                        <!-- <div>
                             <label for="website" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Tgl Selesai</label>
                             <input type="date" name="tgl_selesai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
                             focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
                             dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" value="<?= $data_request_ruangan->tgl_selesai ?>" required>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="flex flex-row gap-3">
                         <button id="btnCloseInputRuangan" onclick="closePopUpInputRuangan()" type="button" class="text-white bg-yellow-600 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
                         font-medium rounded-lg text-sm w-full px-5 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Tutup</button>
                         <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
-                        font-medium rounded-lg text-sm w-full px-5 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                        font-medium rounded-lg text-sm w-full px-5 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kirim</button>
                     </div>
                 </form>
         </div>
             
             <!-- Tabel -->
             <div class="w-full mt-5">
-                <h1 class="text-2xl">Data Request Booking</h1><br>
+                <h1 class="text-2xl">Data Permintaan Pemesanan</h1><br>
                 <!-- Button trigger modal -->
                 <?php 
                 // print_r($viewDataRuangan);
@@ -127,9 +132,9 @@
                         <th>Kegiatan</th>
                         <th>Jam Kegiatan</th>
                         <th>Tgl Kegiatan</th>
-                        <th>Status Request</th>
+                        <th>Status</th>
                         <!-- <th>Deskripsi Ruangan</th> -->
-                        <th>Action</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -137,15 +142,19 @@
                     foreach ($viewDataBooking as $row) { ?>
                       <tr>
                         <td><?php echo $row->nama_room; ?></td>
-                        <td><?php echo $row->id_profil; ?></td>
+                        <td>
+                                <span class="p-2 rounded-lg" style="background-color:<?php echo $row->color_user; ?>;">
+                                    <?php echo $row->nama_user; ?>
+                                </span>
+                            </td>
                         <td><?php echo $row->kegiatan; ?></td>
-                        <td><?php echo $row->jam_mulai .' - '. $row->jam_selesai;?></td>
-                        <td><?php echo $row->tgl_mulai .' - '. $row->tgl_selesai;?></td>
+                        <td><?php echo $row->jam_mulai; ?></td>
+                        <td><?php echo $row->tgl_mulai; ?></td>
                         <td><?php 
                         if ($row->status_booking == "1") {
-                            echo '<p class="p-2 bg-green-500 text-black font-bold rounded-lg">Accepted</p>';
+                            echo '<p class="p-2 bg-green-500 text-black font-bold rounded-lg">Diterima</p>';
                         } elseif ($row->status_booking == "0") {
-                            echo '<p class="p-2 bg-yellow-500 text-black font-bold rounded-lg">Pending</p>';
+                            echo '<p class="p-2 bg-yellow-500 text-black font-bold rounded-lg">Menunggu</p>';
                         };
                         ?></td>
                         <td>
@@ -155,6 +164,8 @@
                                     echo '<div class="pt-1 px-1 bg-yellow-400 hover:bg-yellow-500 text-black font-bold rounded-lg"><a href="'.site_url('requestRuangan/cancelapproveRequestRuangan/').$row->id_booking.'"><box-icon name="x-circle" type="solid" animation="tada" flip="vertical" ></box-icon></a></div>';
                                 } elseif ($row->status_booking == "0") {
                                     echo '<div class="pt-1 px-1 bg-green-400 hover:bg-green-500 text-black font-bold rounded-lg"><a href="'.site_url('requestRuangan/approveRequestRuangan/').$row->id_booking.'"><box-icon name="check-circle" type="solid" animation="tada" ></box-icon></a></div>';
+                                } elseif ($row->status_booking != "0" && $row->status_booking != "1") {
+                                    echo '<div class="pt-1 px-1 bg-green-400 hover:bg-green-500 text-black font-bold rounded-lg"><a href="'.site_url('requestRuangan/notapproveRequestRuangan/').$row->id_booking.'"><box-icon name="check-circle" type="solid" animation="tada" ></box-icon></a></div>';
                                 };
                                 ?>
                                 <div class="pt-1 px-1 bg-blue-200 hover:bg-blue-500 text-black font-bold rounded-lg">

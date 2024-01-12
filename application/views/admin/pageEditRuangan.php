@@ -2,7 +2,7 @@
 <div class="h-screen flex flex-row flex-wrap">
     <!-- start sidebar -->
     <?php $this->load->view('template/sideAdmin'); ?>
-    <div class="bg-gray-100 flex-1 flex-row p-6 md:mt-24">
+    <div class="w-1/2 bg-gray-100 flex-1 flex-row p-6 md:mt-24">
         <?php
             echo $this->session->flashdata('notif'); 
         ?>
@@ -51,7 +51,7 @@
                         <button id="btnCloseInputRuangan" onclick="closePopUpEditRuangan()" type="button" class="text-white bg-yellow-600 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
                         font-medium rounded-lg text-sm w-full px-5 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Tutup</button>
                         <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
-                        font-medium rounded-lg text-sm w-full px-5 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                        font-medium rounded-lg text-sm w-full px-5 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kirim</button>
                     </div>
                 </form>
         </div>
@@ -67,9 +67,9 @@
                     <tr>
                         <th>Nama Ruangan</th>
                         <th>Kuota Ruangan</th>
-                        <th>Geudng Ruangan</th>
+                        <th>Gedung Ruangan</th>
                         <th>Deskripsi Ruangan</th>
-                        <th>Action</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>

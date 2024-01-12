@@ -10,14 +10,14 @@
 		<!-- <script src="https://cdn.tailwindcss.com"></script> -->
         <link href="https://cdn.jsdelivr.net/npm/tom-select@2.0.0-rc.4/dist/css/tom-select.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/tom-select@2.0.0-rc.4/dist/js/tom-select.complete.min.js"></script>
-        <title>Halaman Depan | Pemesanan Ruangan PolkesJaSa</title>
+        <title>Halaman Depan | M-ROOM PolkesJaSa</title>
     </head>
     <body class="bg-gray-100">
         <!-- start navbar -->
         <div class="md:fixed md:w-full md:top-0 md:z-20 flex flex-row flex-wrap items-center bg-white p-6 border-b border-gray-300">
             <!-- logo -->
             <div class="flex-none w-56 flex flex-row items-center">
-                <img src="./assets/img/logo.png" class="w-10 flex-none" />
+                <img src="/assets/img/logo.png" class="w-10 flex-none" />
                 <strong class="capitalize ml-3 flex-1">PolkesJaSa</strong>
                 <!-- <button id="sliderBtn" class="flex-none text-right text-gray-900 hidden md:block">
                     <i class="fad fa-list-ul"></i>
@@ -26,7 +26,7 @@
             <!-- end logo -->
             <!-- navbar content toggle -->
 			<a href="/home/pageLogin" id="navbarToggle" class="group hidden md:block md:fixed right-0 mr-6 capitalize hover:bg-gray-400 p-4 rounded-md transition-all">
-                    <h1 class="text-sm text-gray-800 group-hover:text-white font-semibold m-0 p-0 leading-none uppercase"> Login </h1>
+                    <h1 class="text-sm text-gray-800 group-hover:text-white font-semibold m-0 p-0 leading-none uppercase"> Masuk </h1>
                     <!-- <i class="fad fa-chevron-down ml-2 text-xs leading-none"></i> -->
             </a>
             <!-- end navbar content toggle -->
@@ -34,7 +34,7 @@
             <div id="navbar" class="animated sm:hidden md:fixed md:top-0 md:w-full md:left-0 md:mt-16 md:border-t md:border-b md:border-gray-200 md:p-10 md:bg-white flex-1 pl-3 flex flex-row flex-wrap justify-between items-center md:flex-col md:items-center">
                 <!-- left -->
                 <div class="text-gray-600 md:w-full sm:flex md:flex-row md:justify-evenly md:pb-10 md:mb-10 md:border-b md:border-gray-200">
-                    <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900 uppercase font-bold" href="<?= base_url() ?>" title="email">Pemesanan Ruangan PolkesJaSa</a>
+                    <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900 uppercase font-bold" href="<?= base_url() ?>" title="email">M-ROOM PolkesJaSa</a>
                 </div>
                 <!-- end left -->
                 <!-- right -->
@@ -45,8 +45,8 @@
                             <!-- <div class="w-8 h-8 overflow-hidden rounded-full">
                                 <img class="w-full h-full object-cover" src="./assets/img/user.svg" />
                             </div> -->
-                            <a href="home/pageLogin" class="group ml-2 capitalize flex hover:bg-gray-400 p-4 rounded-md transition-all">
-                                <h1 class="text-sm text-gray-800 group-hover:text-white font-semibold m-0 p-0 leading-none uppercase"> Login </h1>
+                            <a href="/home/pageLogin" class="group ml-2 capitalize flex hover:bg-gray-400 p-4 rounded-md transition-all">
+                                <h1 class="text-sm text-gray-800 group-hover:text-white font-semibold m-0 p-0 leading-none uppercase"> Masuk </h1>
                                 <!-- <i class="fad fa-chevron-down ml-2 text-xs leading-none"></i> -->
                             </a>
                         </button>
@@ -80,6 +80,31 @@
                 <div class="grid grid-cols-4 gap-6 xl:grid-cols-1">
                     <!-- card -->
                     
+                    <!-- card -->
+                    <div class="report-card w-full">
+                        <div class="card">
+                            <div class="card-body flex flex-col">
+                                <!-- top -->
+                                <div class="flex flex-row justify-between items-center">
+                                    <div class="h6 text-red-700 fad fa-receipt"></div>
+                                    <!-- <i class="fa-solid fa-receipt"></i> -->
+                                    <!-- <span class="rounded-full text-white badge bg-red-400 text-xs"> 6% <i class="fal fa-chevron-down ml-1"></i> -->
+                                    </span>
+                                </div>
+                                <!-- end top -->
+                                <!-- bottom -->
+                                <div class="mt-3">
+                                    <h1 class="h3"><?php $kelasKosong = 18 - $viewRequestRoomTotalRuanganNow; 
+                                    
+                                    echo $kelasKosong ?></h1>
+                                    <p>Kelas Kosong Pada Hari Ini</p>
+                                </div>
+                                <!-- end bottom -->
+                            </div>
+                        </div>
+                        <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+                    </div>
+                    <!-- end card -->
                     <!-- card -->
                     <div class="report-card w-full">
                         <div class="card">
@@ -150,13 +175,32 @@
                 <!-- End General Report -->
                 <!-- start quick Info -->
                 <div class="w-full mt-5 bg-orange-100 p-3 rounded-md shadow-md">
-                    <div class="flex justify-between">
+                    <div class="flex justify-between my-4">
                         <div class="mx-7">
                             <h1 class="text-2xl font-bold lg:text-base">Jadwal Kegiatan</h1>
                         </div>
                         <div class="mx-7">
-                            <h1 class="text-2xl lg:text-base my-1">Tanggal Hari ini: <?php echo date("d-m-Y"); ?></h1>
+                            <h1 class="text-2xl lg:text-base my-1">Hari : <?php 
+                                // print_r($viewTglDataBooking);
+                                if (!empty($viewTglDataBooking->tgl_mulai)) {
+                                    $dateIndo = $viewTglDataBooking->tgl_mulai;
+                                    $ex = explode("-",$dateIndo);
+                            
+                                    $tgl = $ex[2].'-'.$ex[1].'-'.$ex[0];
+                                    echo $tgl;
+                                } else if (!empty($viewDataBooking)) {
+                                    echo date("d-m-Y");
+                                } else {
+                                    echo "Tidak Ada Kegiatan Hari ini";
+                                }
+                                
+                                // echo $viewTglDataBooking->tgl_mulai;
+                            ?></h1>
                         </div>
+                        <form action="/home/filterTanggal" method="post">
+                        <div>Search Tanggal : <input type="date" class="w-52 px-1 py-1 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 shadow-sm" name="tgl_cari">
+                        <button type="submit" class="bg-green-600 rounded-md hover:bg-green-900 mt-2 mx-1 text-white p-2">Cari</button></div>
+                        </form>
                     </div>
                     <!-- <div class="flex justify-between">
                         <div class="mx-7">
@@ -177,14 +221,164 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php 
-                        foreach ($viewDataBooking as $row) { ?>
+                    <?php 
+                        foreach ($viewDataBookingAdm as $row) { 
+                        // print_r($row);
+                        ?>
                         <tr>
-                            <td><?php echo $row->tgl_mulai; ?></td>
+                            <td><?php
+                            $dateIndo = $row->tgl_mulai;
+                            $ex = explode("-",$dateIndo);
+                    
+                            $tgl = $ex[2].'-'.$ex[1].'-'.$ex[0];
+                            echo $tgl;
+                            ?></td>
                             <td><?php echo $row->nama_room; ?></td>
                             <td><?php echo $row->kegiatan; ?></td>
                             <td><?php echo $row->jam_mulai .' - '. $row->jam_selesai;?></td>
-                            <td><?php echo $row->id_profil; ?></td>
+                            <td>
+                                <span class="p-2 rounded-lg" style="background-color:<?php echo $row->color_user; ?>;">
+                                    <?php echo $row->nama_user; ?>
+                                </span>
+                            </td>
+                        </tr>
+                        </div>
+                        <?php } ?>
+                        <?php 
+                        foreach ($viewDataBookingDir as $row) { 
+                        // print_r($row);
+                        ?>
+                        <tr>
+                            <td><?php
+                            $dateIndo = $row->tgl_mulai;
+                            $ex = explode("-",$dateIndo);
+                    
+                            $tgl = $ex[2].'-'.$ex[1].'-'.$ex[0];
+                            echo $tgl;
+                            ?></td>
+                            <td><?php echo $row->nama_room; ?></td>
+                            <td><?php echo $row->kegiatan; ?></td>
+                            <td><?php echo $row->jam_mulai .' - '. $row->jam_selesai;?></td>
+                            <td>
+                                <span class="p-2 rounded-lg" style="background-color:<?php echo $row->color_user; ?>;">
+                                    <?php echo $row->nama_user; ?>
+                                </span>
+                            </td>
+                        </tr>
+                        </div>
+                        <?php } ?>
+                        <?php 
+                        foreach ($viewDataBookingKep as $row) { 
+                        // print_r($row);
+                        ?>
+                        <tr>
+                            <td><?php
+                            $dateIndo = $row->tgl_mulai;
+                            $ex = explode("-",$dateIndo);
+                    
+                            $tgl = $ex[2].'-'.$ex[1].'-'.$ex[0];
+                            echo $tgl;
+                            ?></td>
+                            <td><?php echo $row->nama_room; ?></td>
+                            <td><?php echo $row->kegiatan; ?></td>
+                            <td><?php echo $row->jam_mulai .' - '. $row->jam_selesai;?></td>
+                            <td>
+                                <span class="p-2 rounded-lg" style="background-color:<?php echo $row->color_user; ?>;">
+                                    <?php echo $row->nama_user; ?>
+                                </span>
+                            </td>
+                        </tr>
+                        </div>
+                        <?php } ?>
+                        <?php 
+                        foreach ($viewDataBookingKeb as $row) { 
+                        // print_r($row);
+                        ?>
+                        <tr>
+                            <td><?php
+                            $dateIndo = $row->tgl_mulai;
+                            $ex = explode("-",$dateIndo);
+                    
+                            $tgl = $ex[2].'-'.$ex[1].'-'.$ex[0];
+                            echo $tgl;
+                            ?></td>
+                            <td><?php echo $row->nama_room; ?></td>
+                            <td><?php echo $row->kegiatan; ?></td>
+                            <td><?php echo $row->jam_mulai .' - '. $row->jam_selesai;?></td>
+                            <td>
+                                <span class="p-2 rounded-lg" style="background-color:<?php echo $row->color_user; ?>;">
+                                    <?php echo $row->nama_user; ?>
+                                </span>
+                            </td>
+                        </tr>
+                        </div>
+                        <?php } ?>
+                        <?php 
+                        foreach ($viewDataBookingJKG as $row) { 
+                        // print_r($row);
+                        ?>
+                        <tr>
+                            <td><?php
+                            $dateIndo = $row->tgl_mulai;
+                            $ex = explode("-",$dateIndo);
+                    
+                            $tgl = $ex[2].'-'.$ex[1].'-'.$ex[0];
+                            echo $tgl;
+                            ?></td>
+                            <td><?php echo $row->nama_room; ?></td>
+                            <td><?php echo $row->kegiatan; ?></td>
+                            <td><?php echo $row->jam_mulai .' - '. $row->jam_selesai;?></td>
+                            <td>
+                                <span class="p-2 rounded-lg" style="background-color:<?php echo $row->color_user; ?>;">
+                                    <?php echo $row->nama_user; ?>
+                                </span>
+                            </td>
+                        </tr>
+                        </div>
+                        <?php } ?>
+                        <?php 
+                        foreach ($viewDataBookingOP as $row) { 
+                        // print_r($row);
+                        ?>
+                        <tr>
+                            <td><?php
+                            $dateIndo = $row->tgl_mulai;
+                            $ex = explode("-",$dateIndo);
+                    
+                            $tgl = $ex[2].'-'.$ex[1].'-'.$ex[0];
+                            echo $tgl;
+                            ?></td>
+                            <td><?php echo $row->nama_room; ?></td>
+                            <td><?php echo $row->kegiatan; ?></td>
+                            <td><?php echo $row->jam_mulai .' - '. $row->jam_selesai;?></td>
+                            <td>
+                                <span class="p-2 rounded-lg" style="background-color:<?php echo $row->color_user; ?>;">
+                                    <?php echo $row->nama_user; ?>
+                                </span>
+                            </td>
+                        </tr>
+                        </div>
+                        <?php } ?>
+                        <?php 
+                        foreach ($viewDataBookingOther as $row) { 
+                        // print_r($row);
+                        ?>
+                        <tr>
+                            <td><?php
+                            $dateIndo = $row->tgl_mulai;
+                            $ex = explode("-",$dateIndo);
+                    
+                            $tgl = $ex[2].'-'.$ex[1].'-'.$ex[0];
+                            echo $tgl;
+                            ?></td>
+                            <td><?php echo $row->nama_room; ?></td>
+                            <td><?php echo $row->kegiatan; ?></td>
+                            <td><?php echo $row->jam_mulai .' - '. $row->jam_selesai;?></td>
+                            <td>
+                                <span class="p-2 rounded-lg" style="background-color:<?php echo $row->color_user; ?>;">
+                                    <?php echo $row->nama_user; ?>
+                                </span>
+                            </td>
                         </tr>
                         </div>
                         <?php } ?>

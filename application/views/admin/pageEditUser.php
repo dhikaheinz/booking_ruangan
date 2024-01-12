@@ -2,7 +2,7 @@
 <div class="h-screen flex flex-row flex-wrap">
     <!-- start sidebar -->
     <?php $this->load->view('template/sideAdmin'); ?>
-    <div class="bg-gray-100 flex-1 flex-row p-6 md:mt-24">
+    <div class="w-1/2 bg-gray-100 flex-1 flex-row p-6 md:mt-24">
         <?php
             echo $this->session->flashdata('notif'); 
         ?>
@@ -23,7 +23,7 @@
                         dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan Nama User" value="<?= $data_UserProfil->nama_user ?>" required>
                     </div>
                     <div>
-                        <label for="last_name" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">NIP/NIM</label>
+                        <label for="last_name" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Username (NIP/NIM)</label>
                         <input type="text" name="nip_nim" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
                             focus:border-blue-500 block w-full p-1 md:p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
                             dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan NIP/NIM" value="<?= $data_UserProfil->nip_nim ?>" required>
@@ -64,13 +64,13 @@
                         <button id="btnCloseInputRuangan" onclick="closePopUpEditRuangan()" type="button" class="text-white bg-yellow-600 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
                         font-medium rounded-lg text-sm w-full px-5 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Tutup</button>
                         <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
-                        font-medium rounded-lg text-sm w-full px-5 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                        font-medium rounded-lg text-sm w-full px-5 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kirim</button>
                     </div>
                 </form>
         </div>
             <!-- Tabel -->
             <div class="w-full mt-5">
-                <h1 class="text-2xl">Data Ruangan</h1><br>
+                <h1 class="text-2xl">Data User</h1><br>
                 <!-- Button trigger modal -->
                 <?php 
                 // print_r($viewDataRuangan);
@@ -78,13 +78,13 @@
                 <table id="example" class="display nowrap" style="width:100%">
                 <thead>
                     <tr>
-                        <th>NIP/NIM</th>
+                        <th>Username</th>
                         <th>Nama</th>
                         <th>Tingkat</th>
                         <th>Jurusan</th>
                         <th>No Hp</th>
                         <th>Email</th>
-                        <th>Action</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
